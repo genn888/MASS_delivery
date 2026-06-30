@@ -4,37 +4,27 @@ Benvenuto in MASS! Questa guida ti spiega passo dopo passo come configurare ed e
 
 ---
 
-## 1. Preparazione dell'ambiente
-1. Apri il **Terminale** del tuo Mac.
-2. Posizionati nella cartella del progetto:
-   ```bash
-   cd "/Users/gennaro/Desktop/MASS_delivery"
-   ```
-   *(o digita `cd` seguito da uno spazio e trascina la cartella del progetto nella finestra del Terminale).*
-3. Crea un ambiente virtuale per isolare le dipendenze:
-   ```bash
-   python3 -m venv .venv
-   ```
-4. Attiva l'ambiente virtuale:
-   ```bash
-   source .venv/bin/activate
-   ```
-5. Aggiorna `pip` ed installa tutte le dipendenze richieste:
-   ```bash
-   pip install --upgrade pip
-   pip install -r requirements.txt
-   ```
+## 1. Preparazione dell'ambiente ed Avvio (Zero-Config)
+Il progetto è configurato per installare automaticamente tutte le dipendenze e creare l'ambiente virtuale al primo avvio. Non è richiesto alcun comando da terminale.
+
+- **Su macOS (Mac)**: Fai doppio clic sul file `start_ui.command` o esegui `Start UI.app`.
+- **Su Windows**: Fai doppio clic sul file `start_ui.bat`.
+
+*(Al primo avvio, lo script rileverà l'assenza dell'ambiente virtuale, creerà la cartella `.venv` ed installerà automaticamente i requisiti. I successivi avvii saranno immediati).*
 
 ---
 
 ## 2. Configurazione delle credenziali OpenRouter
-Il sistema necessita della tua chiave OpenRouter per interrogare i modelli esterni.
-1. Crea un file di testo nella directory principale del progetto chiamato esattamente `.env`.
-2. All'interno del file, scrivi la seguente riga sostituendo la chiave di esempio con la tua:
-   ```env
-   OPENROUTER_API_KEY=ghp_tua_chiave_personale_openrouter_qui
-   ```
-*(Nota: per i comandi diretti da terminale puoi anche digitare `export OPENROUTER_API_KEY="tua_chiave"` prima di lanciare gli script).*
+Il sistema necessita della tua chiave OpenRouter per interrogare i modelli esterni. Puoi inserirla in due modi:
+
+- **Metodo A (Consigliato - Tramite Interfaccia Web)**:
+  Una volta avviata l'interfaccia Streamlit nel browser, troverai nella barra laterale sinistra il pannello **Chiavi API (OpenRouter)**. Digita la tua chiave e clicca su **Salva Chiave**. La chiave verrà salvata automaticamente nel file `.env` locale in modo persistente.
+  
+- **Metodo B (Manuale)**:
+  Crea un file di testo nella directory principale del progetto chiamato esattamente `.env` ed inserisci all'interno la seguente riga:
+  ```env
+  OPENROUTER_API_KEY=ghp_tua_chiave_personale_openrouter_qui
+  ```
 
 ---
 

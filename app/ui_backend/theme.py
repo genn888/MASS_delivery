@@ -2,7 +2,53 @@ from __future__ import annotations
 import streamlit as st
 BRAND_CSS = '\n<style>\n    :root {\n        --mass-bg: #101218;\n        --mass-surface: #171b24;\n        --mass-surface-2: #1d2230;\n        --mass-border: #2d3550;\n        --mass-text: #f4f7fb;\n        --mass-muted: #abb4c8;\n        --mass-purple: #7a5cff;\n        --mass-blue: #5c8cff;\n        --mass-yellow: #f0c75e;\n    }\n\n    .stApp {\n        background: var(--mass-bg);\n        color: var(--mass-text);\n    }\n\n    [data-testid="stAppViewContainer"] {\n        background: var(--mass-bg);\n    }\n\n    [data-testid="stSidebar"] {\n        background: linear-gradient(180deg, #1a1d28 0%, #151821 100%);\n        border-right: 1px solid rgba(122, 92, 255, 0.18);\n    }\n\n    [data-testid="stSidebarHeader"] {\n        padding-top: 4.4rem !important;\n        padding-bottom: 4.6rem !important;\n    }\n\n    [data-testid="stLogo"], [data-testid="stSidebarHeader"] img {\n        height: 10.1rem !important;\n        width: auto !important;\n        max-height: 10.1rem !important;\n    }\n\n    h1, h2, h3 {\n        color: var(--mass-text);\n        letter-spacing: 0;\n    }\n\n    h1 {\n        text-shadow: 0 0 18px rgba(92, 140, 255, 0.10);\n    }\n\n    p, label, .stCaption, .stMarkdown, .stText, .stMetricLabel {\n        color: var(--mass-text);\n    }\n\n    [data-testid="stMetricValue"] {\n        color: #ffffff;\n    }\n\n    [data-testid="stExpander"] {\n        border: 1px solid rgba(122, 92, 255, 0.20);\n        border-radius: 8px;\n        background: rgba(29, 34, 48, 0.45);\n    }\n\n    [data-baseweb="select"] > div,\n    .stTextInput input,\n    .stNumberInput input,\n    .stTextArea textarea {\n        background: var(--mass-surface) !important;\n        color: var(--mass-text) !important;\n        border: 1px solid var(--mass-border) !important;\n    }\n\n    .stMultiSelect [data-baseweb="tag"] {\n        background: rgba(122, 92, 255, 0.16) !important;\n        border: 1px solid rgba(122, 92, 255, 0.35) !important;\n    }\n\n    .stButton > button,\n    .stDownloadButton > button {\n        background: linear-gradient(90deg, rgba(122, 92, 255, 0.95), rgba(92, 140, 255, 0.92));\n        color: #ffffff;\n        border: 1px solid rgba(240, 199, 94, 0.22);\n        border-radius: 8px;\n    }\n\n    .stButton > button:hover,\n    .stDownloadButton > button:hover {\n        border-color: rgba(240, 199, 94, 0.55);\n        box-shadow: 0 0 0 1px rgba(240, 199, 94, 0.16), 0 6px 24px rgba(92, 140, 255, 0.18);\n    }\n\n    .stButton > button[kind="secondary"] {\n        background: var(--mass-surface);\n        border: 1px solid rgba(92, 140, 255, 0.28);\n    }\n\n    [data-testid="stDataFrame"] {\n        border: 1px solid rgba(92, 140, 255, 0.14);\n        border-radius: 8px;\n        overflow: hidden;\n    }\n\n    [data-testid="stDataFrame"] thead tr th {\n        background: #1b2030 !important;\n        color: #d9def0 !important;\n    }\n\n    [data-testid="stCodeBlock"] pre,\n    .stJson {\n        background: #121722 !important;\n        border: 1px solid rgba(122, 92, 255, 0.16);\n    }\n\n    a {\n        color: #8eafff !important;\n    }\n\n    hr {\n        border-color: rgba(240, 199, 94, 0.10);\n    }\n</style>\n'
 
+import os
+
+def render_api_config_sidebar() -> None:
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("🔑 Chiavi API (OpenRouter)")
+    
+    env_content = {}
+    if os.path.exists('.env'):
+        try:
+            with open('.env', 'r', encoding='utf-8') as f:
+                for line in f:
+                    if '=' in line:
+                        k, v = line.strip().split('=', 1)
+                        env_content[k.strip()] = v.strip()
+        except Exception:
+            pass
+                    
+    current_key = os.environ.get("OPENROUTER_API_KEY") or env_content.get("OPENROUTER_API_KEY") or ""
+    
+    openrouter_key_input = st.sidebar.text_input(
+        "OpenRouter API Key",
+        type="password",
+        value=current_key,
+        help="Inserisci la tua chiave API OpenRouter. Verrà salvata nel file .env locale per le sessioni future."
+    )
+    
+    if st.sidebar.button("Salva Chiave"):
+        if openrouter_key_input:
+            env_content['OPENROUTER_API_KEY'] = openrouter_key_input
+            os.environ['OPENROUTER_API_KEY'] = openrouter_key_input
+        else:
+            if 'OPENROUTER_API_KEY' in env_content:
+                del env_content['OPENROUTER_API_KEY']
+            if 'OPENROUTER_API_KEY' in os.environ:
+                del os.environ['OPENROUTER_API_KEY']
+                
+        try:
+            with open('.env', 'w', encoding='utf-8') as f:
+                for k, v in env_content.items():
+                    f.write(f"{k}={v}\n")
+            st.sidebar.success("Chiave salvata!")
+            st.rerun()
+        except Exception as e:
+            st.sidebar.error(f"Errore nel salvataggio: {e}")
+
 def init_page(*, page_title: str, page_icon: str) -> None:
     st.set_page_config(page_title=page_title, page_icon=page_icon, layout='wide')
     st.logo('MASS_logo.png')
     st.markdown(BRAND_CSS, unsafe_allow_html=True)
+    render_api_config_sidebar()
