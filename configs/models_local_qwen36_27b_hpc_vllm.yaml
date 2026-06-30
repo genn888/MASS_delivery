@@ -1,0 +1,121 @@
+roles:
+  requirement_analyzer:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.0
+    max_tokens: 16384
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  architect:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.0
+    max_tokens: 32768
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  planning_reviewer:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.0
+    max_tokens: 16384
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  coder:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.0
+    max_tokens: 65536
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  reviewer:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.1
+    max_tokens: 16384
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  test_writer:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.1
+    max_tokens: 16384
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  parameter_solver:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.0
+    max_tokens: 16384
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  parameter_repairer:
+    provider: openai_compatible
+    model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+    api_key_env: LOCAL_QWEN_API_KEY
+    base_url: http://localhost:8003/v1
+    temperature: 0.2
+    max_tokens: 16384
+    request_timeout_seconds: 1500
+    hard_timeout_seconds: 1530
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072

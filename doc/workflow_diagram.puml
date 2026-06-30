@@ -1,0 +1,39 @@
+@startuml workflow_diagram
+!theme resume-light
+skinparam backgroundColor #fdfdfd
+skinparam ArrowColor #4a90e2
+skinparam ActorBorderColor #4a90e2
+skinparam NodeBorderColor #4a90e2
+skinparam NodeBackgroundColor #ebf4ff
+skinparam StateBorderColor #4a90e2
+skinparam StateBackgroundColor #ffffff
+
+title MASS Workflow - Multi-Agent State Graph
+
+state "Requirement Analyzer" as RA #E1F5FE : Translate Task\nto Specs
+state "Architect" as ARCH #E3F2FD : Plan Components\nand Routing
+state "Planning Reviewer" as PR #F3E5F5 : Verify\nLogical Strategy
+state "Coder" as CODER #E8F5E9 : Implement\nSource Code
+state "Static Validator" as SV #FFF9C4 : Deterministic\nVerification
+state "Reviewer" as REV #FFF3E0 : Qualitative\nLLM Review
+state "Finalizer" as FIN #FFEBEE : Report\nGeneration
+
+[*] --> RA : User Task
+RA --> ARCH
+
+ARCH -right-> PR : Propose Plan
+PR --> ARCH : [Changes\nRequested]
+PR --> CODER : [Approved]
+
+ARCH --> CODER : [Direct Start]
+
+CODER --> SV : Execute Local\nVerification
+SV --> CODER : [Issues\nFound]
+SV --> REV : [Passed]
+
+REV --> CODER : [Bugs\nFound]
+REV --> FIN : [Done]
+
+FIN --> [*] : Terminate
+
+@enduml

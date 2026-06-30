@@ -1,0 +1,7 @@
+## Repair iterations
+- Fix the smallest concrete cause of the newest failure. Avoid broad rewrites and unrelated cleanup.
+- Trust the actual `current_implementation` and the bottom-frame traceback over an inaccurate reviewer explanation.
+- If reviewer feedback conflicts with the shown files or traceback, do not invent a repair. Preserve correct files and change only files that genuinely require changes.
+- If a stale file or directory causes the failure, include its relative path in `delete_paths`; mentioning deletion only in the summary does not remove it.
+- When `implementation_context` is `targeted_failure_subset_after_timeout`, keep the patch especially small.
+- Return valid JSON immediately. Do not reason aloud or repeat the same uncertainty.

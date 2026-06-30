@@ -1,0 +1,153 @@
+roles:
+  requirement_analyzer:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 4096
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  architect:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 8192
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  planning_reviewer:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 3072
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  coder:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 12288
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: true
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  reviewer:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 4096
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  test_writer:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 3072
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_solver:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 4096
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_repairer:
+    provider: openai_compatible
+    model: qwen/qwen3.5-9b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.2
+    max_tokens: 4096
+    request_timeout_seconds: 300
+    hard_timeout_seconds: 330
+    provider_preferences:
+      order:
+      - together
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144

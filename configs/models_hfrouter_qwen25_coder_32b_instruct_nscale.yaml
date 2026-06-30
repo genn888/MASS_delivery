@@ -1,0 +1,97 @@
+roles:
+  requirement_analyzer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.0
+    max_tokens: 4096
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  architect:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.0
+    max_tokens: 8192
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  planning_reviewer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.0
+    max_tokens: 3072
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  coder:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.0
+    max_tokens: 12288
+    capabilities:
+      supports_tools: true
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  reviewer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.1
+    max_tokens: 4096
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  test_writer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.1
+    max_tokens: 3072
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_solver:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.0
+    max_tokens: 4096
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_repairer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct:nscale
+    api_key_env: HF_TOKEN
+    base_url: https://router.huggingface.co/v1
+    temperature: 0.2
+    max_tokens: 4096
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144

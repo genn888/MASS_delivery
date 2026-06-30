@@ -1,0 +1,14 @@
+## Django projects
+- Make `python manage.py check`, `python manage.py migrate --noinput`, and homepage readiness pass from a fresh checkout.
+- Put `manage.py` at generated-project root and keep `DJANGO_SETTINGS_MODULE`, `ROOT_URLCONF`, installed apps, routes, models, forms, admin registrations, and migrations consistent.
+- Configure a non-empty local benchmark `SECRET_KEY` and allow `testserver`, `localhost`, and `127.0.0.1`.
+- Include real migration packages and valid migration files for defined models. Do not rely on an existing SQLite database or ask the user to run `makemigrations`.
+- Keep model references closed: every imported model, field, and app module must exist or be removed consistently from every importer and migration.
+- If a local-module import fails, fix the exact importer and imported module together.
+- Make database-backed direct GET pages safe on a fresh or empty database with deterministic empty or fallback content.
+- When the benchmark contract lists required content to display (e.g. "latest posts", "product catalog", a listing page), seed that content with a Django data migration (`migrations.RunPython`) so it is present right after `migrate`. Do NOT rely on a management command, fixture, or admin entry — external evaluation only runs `migrate` and starts the server, never a manual seed step. "Empty-database safe" means it must not crash, not that required listings may render empty.
+- Do not gate required listing content behind model flags (`is_published`, `is_active`, `status`) unless the contract requires it; if you must, ensure the seeded rows satisfy the filter so required pages are non-empty.
+- Use valid Django template syntax. Do not call Python functions with arguments inside `{{ ... }}`.
+- In every template that uses `{% static %}`, load `static` in that same rendered template.
+- Keep root and app template copies consistent; patch the template Django actually renders.
+- Use direct-GET-safe mapped pages and stable form controls. Avoid login requirements unless the contract explicitly performs login first.

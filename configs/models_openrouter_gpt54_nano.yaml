@@ -1,0 +1,121 @@
+roles:
+  requirement_analyzer:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 4096
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  architect:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 8192
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  planning_reviewer:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 3072
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  coder:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 12288
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: true
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  reviewer:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 4096
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  test_writer:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 3072
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_solver:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 4096
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_repairer:
+    provider: openai_compatible
+    model: openai/gpt-5.4-nano
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.2
+    max_tokens: 4096
+    provider_preferences:
+      allow_fallbacks: true
+      require_parameters: false
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144

@@ -1,0 +1,100 @@
+# Mixture-of-models (multi-agent):
+#  - Planning/analysis roles  -> MiniMax-M3 via HuggingFace router
+#  - Coding & everything else  -> Qwen3.6-27B locale (vLLM cluster, :8003)
+#
+# Parametri ripresi 1:1 da configs/models_hf_minimax_m3.yaml e
+# configs/models_local_qwen36_27b_hpc_vllm.yaml.
+# Per usarlo: dropdown "Base models config" -> questo file, lasciare VUOTO il
+# campo "global model" (altrimenti sovrascrive tutti i ruoli con un solo modello).
+
+x_hf_minimax_m3: &hf_minimax_m3
+  provider: openai_compatible
+  model: MiniMaxAI/MiniMax-M3:together
+  api_key_env: HF_TOKEN
+  base_url: https://router.huggingface.co/v1
+  temperature: 0.0
+  max_tokens: 16384
+  request_timeout_seconds: 1500
+  hard_timeout_seconds: 1530
+  max_attempts: 10
+  capabilities:
+    supports_tools: false
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 204800
+
+x_local_qwen36: &local_qwen36
+  provider: openai_compatible
+  model: /home/G.DAMBROSIO65/hf_cache/models--Qwen--Qwen3.6-27B-local
+  api_key_env: LOCAL_QWEN_API_KEY
+  base_url: http://localhost:8003/v1
+  temperature: 0.0
+  max_tokens: 16384
+  request_timeout_seconds: 1500
+  hard_timeout_seconds: 1530
+  max_attempts: 1
+  capabilities:
+    supports_tools: false
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 131072
+
+roles:
+  # --- MiniMax-M3 (HF): analisi requisiti + architettura + review del piano ---
+  requirement_analyzer:
+    <<: *hf_minimax_m3
+    temperature: 0.0
+    max_tokens: 16384
+  architect:
+    <<: *hf_minimax_m3
+    temperature: 0.0
+    max_tokens: 32768
+  planning_reviewer:
+    <<: *hf_minimax_m3
+    temperature: 0.0
+    max_tokens: 16384
+
+  # --- Qwen3.6-27B (cluster): coder + tutti gli altri agenti ---
+  coder:
+    <<: *local_qwen36
+    temperature: 0.0
+    max_tokens: 65536
+    max_attempts: 3
+  # Ruoli "leggeri": timeout abbassato a 8 min (request 480 / hard 510) come
+  # protezione anti-freeze — un modello reasoning che diverge o restituisce
+  # vuoto fallisce in fretta invece di bloccare ~25 min e ritentare 3 volte.
+  reviewer:
+    <<: *local_qwen36
+    temperature: 0.1
+    max_tokens: 16384
+    request_timeout_seconds: 480
+    hard_timeout_seconds: 510
+    max_attempts: 3
+  test_writer:
+    <<: *local_qwen36
+    temperature: 0.1
+    max_tokens: 16384
+    request_timeout_seconds: 480
+    hard_timeout_seconds: 510
+    max_attempts: 3
+  browser_test_writer:
+    <<: *local_qwen36
+    temperature: 0.1
+    max_tokens: 16384
+    request_timeout_seconds: 480
+    hard_timeout_seconds: 510
+    max_attempts: 3
+  parameter_solver:
+    <<: *local_qwen36
+    temperature: 0.0
+    max_tokens: 16384
+    request_timeout_seconds: 480
+    hard_timeout_seconds: 510
+    max_attempts: 3
+  parameter_repairer:
+    <<: *local_qwen36
+    temperature: 0.2
+    max_tokens: 16384
+    request_timeout_seconds: 480
+    hard_timeout_seconds: 510
+    max_attempts: 3

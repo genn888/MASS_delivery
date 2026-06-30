@@ -1,0 +1,6 @@
+## Generated test repairs
+- Edit generated tests only when reviewer feedback explicitly classifies a pure `local_test_bug` and no unresolved `project_bug` remains.
+- Repair invalid Python, incorrect import setup, unavailable subprocess interpreter names, stale ports, or broken cleanup in the generated test itself.
+- Use `sys.executable` instead of assuming `python` or `python3` exists.
+- Do not change application behavior to satisfy an invalid local assertion.
+- A missing declared third-party package is a local environment issue, not a reason to rewrite imports or application logic.

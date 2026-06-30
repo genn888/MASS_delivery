@@ -1,0 +1,13 @@
+projecteval_root: external/ProjectEval
+models_config: configs/models_production.yaml
+system_config: configs/system.yaml
+level: 1
+mode: direct
+project_ids:
+  - "1"
+  - "2"
+model_label: gemini-mas-qwen-coder
+parameter_role: test_writer
+run_judge: false
+run_indicators: false
+workspace_root: benchmark_runs/projecteval

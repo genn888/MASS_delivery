@@ -1,0 +1,8 @@
+## Console and batch project rules
+- Require a single runnable entrypoint at the generated-project root (`main.py` unless the contract names another). If it is missing, make this the top blocking item.
+- Require the implementation language to match the requested stack; when the stack is `None`, require Python. Reject implementations that take the task theme/name literally as a language (e.g. shell scripts, a `Makefile`, or a `run.sh` for a "Bash Crawl" game) — classify as `project_bug` and request a Python `main.py` rewrite.
+- Verify the program reproduces the contract's menu options, commands, and `expected_texts` exactly over stdin/stdout. Reject a divergent or custom command interface even if the program runs without errors.
+- For file-processing/spreadsheet tasks, verify a fresh run CREATES the output file with the exact contract filename in the expected working directory. A program that assumes the output already exists, or writes a different filename, is a blocking bug.
+- Distinguish paths relative to the current working directory from paths relative to the source file. Use the contract and failing test behavior to choose the correct location.
+- Check deterministic input filenames, output filenames, exit codes, stdout error messages, and fresh-run behavior.
+- Flag multi-module splitting only when it causes import/entrypoint failures; otherwise prefer one precise file-I/O or entrypoint fix over broad refactoring advice.

@@ -1,0 +1,7 @@
+## Website project rules
+- Verify stable routes, deterministic DOM structure, visible labels, and exact mapped selector `answer` values at the required URLs.
+- Do not rename externally owned selectors, routes, filenames, or expected texts. Ask the application to render them correctly.
+- Required judge-facing selectors should be present on initial GET unless the contract explicitly requires generated state.
+- Treat unrelated apps on occupied ports, stale fixed ports, invalid Selenium assertions, and browser-process cleanup errors as `local_test_bug`.
+- For downloads, require stable routes or filenames and avoid placeholder links or hidden-state-only access.
+- For direct URLs, require deterministic fallback content when missing session state or database rows would otherwise hide mapped selectors.

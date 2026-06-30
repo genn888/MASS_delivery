@@ -1,0 +1,44 @@
+# Python caches and virtualenvs
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+
+# Test and tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+
+# Local runtime artifacts
+.env
+artifacts/
+generated_project/
+*.log
+*.sqlite3
+
+# Benchmark outputs
+benchmark_archives/
+benchmark_runs/
+
+# ProjectEval runtime drivers and generated result files
+external/ProjectEval/.git.projecteval.backup/
+external/ProjectEval/__pycache__/
+
+# Version session snapshots so benchmark/UI state can be restored on another machine.
+# Keep interpreter cache noise out of Git while allowing logs, sqlite files,
+# generated projects, mirrored artifacts, and result JSONs under sessions/.
+!sessions/
+!sessions/**
+sessions/**/__pycache__/
+sessions/**/*.py[cod]

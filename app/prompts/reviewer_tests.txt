@@ -1,0 +1,8 @@
+## Generated test review rules
+- Distinguish application failures from generated-test failures. Do not change application behavior to satisfy an invalid generated assertion.
+- If a generated test fails during collection because its Python is invalid, imports are missing, or framework setup occurs too late, classify it as `local_test_bug` and request a generated-test repair only.
+- If a subprocess test uses `python`, request `sys.executable` when interpreter lookup is the failure.
+- If an assertion reflects a real benchmark-friendly application issue, request the application fix.
+- Static placeholder warnings are non-blocking unless they correspond to a concrete runtime or judge-facing failure.
+- Put application bugs first, then local-test bugs, then parameter or judge-alignment risks.
+- When one blocking failure explains the run, request that smallest repair before lower-priority work.

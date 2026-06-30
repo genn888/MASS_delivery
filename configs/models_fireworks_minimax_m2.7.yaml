@@ -1,0 +1,137 @@
+roles:
+  requirement_analyzer:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 4096
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800
+  architect:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 8192
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800
+  planning_reviewer:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 3072
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800
+  coder:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 12288
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: true
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800
+  reviewer:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 4096
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800
+  test_writer:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 3072
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800
+  parameter_solver:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 4096
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800
+  parameter_repairer:
+    provider: openai_compatible
+    model: minimax/minimax-m2.7
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.2
+    max_tokens: 4096
+    provider_preferences:
+      order:
+      - minimax/fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 204800

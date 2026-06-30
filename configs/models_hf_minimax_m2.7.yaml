@@ -1,0 +1,60 @@
+x_hf_minimax_m2_7: &hf_minimax_m2_7
+  provider: openai_compatible
+  model: MiniMaxAI/MiniMax-M2.7
+  api_key_env: HF_TOKEN
+  base_url: https://router.huggingface.co/together/v1
+  temperature: 0.0
+  max_tokens: 16384
+  request_timeout_seconds: 400
+  hard_timeout_seconds: 440
+  capabilities:
+    supports_tools: false
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 204800
+
+x_hf_minimax_m2_7_tools: &hf_minimax_m2_7_tools
+  <<: *hf_minimax_m2_7
+  capabilities:
+    supports_tools: true
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 204800
+
+roles:
+  requirement_analyzer:
+    <<: *hf_minimax_m2_7
+    temperature: 0.0
+    max_tokens: 8192
+  architect:
+    <<: *hf_minimax_m2_7
+    temperature: 0.0
+    max_tokens: 16384
+  planning_reviewer:
+    <<: *hf_minimax_m2_7
+    temperature: 0.0
+    max_tokens: 4096
+  coder:
+    <<: *hf_minimax_m2_7_tools
+    temperature: 0.0
+    max_tokens: 16384
+  reviewer:
+    <<: *hf_minimax_m2_7
+    temperature: 0.1
+    max_tokens: 8192
+  test_writer:
+    <<: *hf_minimax_m2_7
+    temperature: 0.1
+    max_tokens: 4096
+  browser_test_writer:
+    <<: *hf_minimax_m2_7
+    temperature: 0.1
+    max_tokens: 4096
+  parameter_solver:
+    <<: *hf_minimax_m2_7
+    temperature: 0.0
+    max_tokens: 8192
+  parameter_repairer:
+    <<: *hf_minimax_m2_7
+    temperature: 0.2
+    max_tokens: 8192

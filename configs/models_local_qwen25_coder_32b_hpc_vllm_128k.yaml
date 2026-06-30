@@ -1,0 +1,136 @@
+roles:
+  requirement_analyzer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.0
+    max_tokens: 16384
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  architect:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.0
+    max_tokens: 32768
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  planning_reviewer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.0
+    max_tokens: 16384
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  coder:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.0
+    max_tokens: 32768
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  reviewer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.1
+    max_tokens: 16384
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  test_writer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.1
+    max_tokens: 16384
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  browser_test_writer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.1
+    max_tokens: 8192
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  parameter_solver:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.0
+    max_tokens: 16384
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  parameter_repairer:
+    provider: openai_compatible
+    model: Qwen/Qwen2.5-Coder-32B-Instruct-128K
+    api_key_env: LOCAL_QWEN25_CODER_API_KEY
+    base_url: http://localhost:8004/v1
+    temperature: 0.2
+    max_tokens: 16384
+    request_timeout_seconds: 3600
+    hard_timeout_seconds: 3630
+    max_attempts: 1
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072

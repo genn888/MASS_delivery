@@ -1,0 +1,13 @@
+## Django project rules
+- When a Django traceback exists, cite the bottom-frame exception exactly and request the smallest concrete repair first.
+- Prioritize failures from `python manage.py check`, `python manage.py migrate --noinput`, and homepage readiness above selector or style issues.
+- `manage.py` belongs at generated-project root. Keep `DJANGO_SETTINGS_MODULE`, `ROOT_URLCONF`, installed apps, routes, models, forms, admin registrations, and migrations consistent.
+- For missing-table errors, require valid migrations and a fresh-database-safe empty render path. Do not merely ask the Coder to run migrations.
+- When the contract requires content to be displayed, verify required pages are non-empty on a freshly migrated database (only `migrate` + server start). If seed data lives in a management command or fixture instead of a data migration, treat it as a blocking bug. A crash-free but empty required listing does not satisfy the contract.
+- Reject template method calls with arguments inside `{{ ... }}`. Use URL tags or literal paths.
+- Reject `ModelForm.Meta.fields` entries for fields with `auto_now=True`, `auto_now_add=True`, or `editable=False`.
+- For missing templates, compare actual template locations with `TEMPLATES["DIRS"]`, `APP_DIRS`, and `BASE_DIR`.
+- For `{% static %}` failures, patch the template that is actually rendered and ensure it loads `static`.
+- For authentication model failures, require one complete strategy: either a configured custom user model with migrations or consistent use of Django's built-in user model.
+- Empty or tiny `models.py`, `admin.py`, and app-owned test files are acceptable unless they cause runtime or judge-facing failures.
+- Browser-test setup failures caused by Django initialization order, stale ports, or server-process cleanup are `local_test_bug`; do not request unrelated application rewrites.

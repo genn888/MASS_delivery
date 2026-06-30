@@ -1,0 +1,61 @@
+x_nvidia_minimax_m3: &nvidia_minimax_m3
+  provider: openai_compatible
+  model: minimaxai/minimax-m3
+  api_key_env: NVIDIA_API_KEY
+  base_url: https://integrate.api.nvidia.com/v1
+  temperature: 0.0
+  max_tokens: 16384
+  request_timeout_seconds: 300
+  hard_timeout_seconds: 330
+  max_attempts: 10
+  capabilities:
+    supports_tools: false
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 204800
+
+x_nvidia_minimax_m3_tools: &nvidia_minimax_m3_tools
+  <<: *nvidia_minimax_m3
+  capabilities:
+    supports_tools: true
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 204800
+
+roles:
+  requirement_analyzer:
+    <<: *nvidia_minimax_m3
+    temperature: 0.0
+    max_tokens: 8192
+  architect:
+    <<: *nvidia_minimax_m3
+    temperature: 0.0
+    max_tokens: 16384
+  planning_reviewer:
+    <<: *nvidia_minimax_m3
+    temperature: 0.0
+    max_tokens: 4096
+  coder:
+    <<: *nvidia_minimax_m3_tools
+    temperature: 0.0
+    max_tokens: 16384
+  reviewer:
+    <<: *nvidia_minimax_m3
+    temperature: 0.1
+    max_tokens: 8192
+  test_writer:
+    <<: *nvidia_minimax_m3
+    temperature: 0.1
+    max_tokens: 4096
+  browser_test_writer:
+    <<: *nvidia_minimax_m3
+    temperature: 0.1
+    max_tokens: 4096
+  parameter_solver:
+    <<: *nvidia_minimax_m3
+    temperature: 0.0
+    max_tokens: 8192
+  parameter_repairer:
+    <<: *nvidia_minimax_m3
+    temperature: 0.2
+    max_tokens: 8192

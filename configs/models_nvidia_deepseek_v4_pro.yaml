@@ -1,0 +1,62 @@
+x_nvidia_deepseek_v4_pro: &nvidia_deepseek_v4_pro
+  provider: openai_compatible
+  model: deepseek-ai/deepseek-v4-pro
+  api_key_env: NVIDIA_API_KEY
+  base_url: https://integrate.api.nvidia.com/v1
+  temperature: 1.0
+  max_tokens: 16384
+  request_timeout_seconds: 300
+  hard_timeout_seconds: 330
+  extra_body:
+    top_p: 0.95
+    chat_template_kwargs:
+      thinking: false
+  capabilities:
+    supports_tools: false
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 262144
+
+x_nvidia_deepseek_v4_pro_tools: &nvidia_deepseek_v4_pro_tools
+  <<: *nvidia_deepseek_v4_pro
+  capabilities:
+    supports_tools: true
+    supports_json: true
+    supports_system_prompt: true
+    max_context: 262144
+
+roles:
+  requirement_analyzer:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.0
+    max_tokens: 4096
+  architect:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.0
+  planning_reviewer:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.0
+    max_tokens: 8192
+  coder:
+    <<: *nvidia_deepseek_v4_pro_tools
+    temperature: 0.0
+  reviewer:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.1
+    max_tokens: 4096
+  test_writer:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.1
+    max_tokens: 4096
+  browser_test_writer:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.1
+    max_tokens: 4096
+  parameter_solver:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.0
+    max_tokens: 8192
+  parameter_repairer:
+    <<: *nvidia_deepseek_v4_pro
+    temperature: 0.2
+    max_tokens: 8192

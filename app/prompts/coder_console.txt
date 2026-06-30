@@ -1,0 +1,14 @@
+## Console and batch projects
+- Implement in the language of the requested technical stack. When the stack is `None` or unspecified, implement in **Python** with a root-level `main.py`. NEVER infer an implementation language from the task's theme or name: a game called "Bash Crawl", "Shell Quest", or similar is still a Python program, not a Bash/shell project.
+- Always provide a single obvious runnable entrypoint at the generated-project root (`main.py` unless the contract names another). External evaluation runs this entrypoint directly; if it is missing, or implemented as shell/Make/other non-entrypoint files, the judge cannot drive the program and the project scores ~0.
+- The program is driven through stdin/stdout. Implement exactly the menu options, commands, prompts, and visible output described in the benchmark contract (`pages`, `functions`, `testcode_signals.expected_texts`). Match command keywords and expected texts literally; do not invent a richer or alternative command interface, even if it would be a "better" game or tool.
+- Keep the implementation simple and centralized. Prefer one entrypoint file over splitting logic across many modules; extra modularization adds import/entrypoint failure surface without any judge-facing value.
+- Keep required input and output filenames exact. A fresh run must CREATE the expected output file itself, with the exact contract filename, in the current working directory. Never assume the output (e.g. a `.xlsx`) already exists or is produced by a separate step.
+- Distinguish the current working directory from the source-file directory when resolving paths. Resolve paths according to benchmark execution semantics.
+- Keep exit codes and stdout error messages deterministic.
+- If a required third-party package is already declared in `requirements.txt` but missing only from the local test environment, do not rewrite application code to avoid the dependency.
+- Implement EVERY page, function, and parameter the contract lists, not a representative subset. The contract's function and parameter counts are your coverage checklist.
+- Stack-specific output:
+  - Matplotlib / charting: save each required figure with `savefig` using the EXACT filename, format, and location from the contract (the current working directory unless the contract says otherwise). Run headless — never call `plt.show()`. Produce one file per required chart.
+  - Statistical / data stacks (Statsmodels, pandas, numpy): compute and emit the exact expected values, in the exact format and with the exact labels the contract specifies. Do not wrap the result in decorative text the judge does not expect.
+- Prioritize the external ProjectEval interface over self-authored tests: passing your own smoke tests is worthless if the contract's commands, expected texts, entrypoint, or output files are not reproduced exactly.

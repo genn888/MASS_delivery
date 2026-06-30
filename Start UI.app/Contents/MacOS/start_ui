@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -e
+
+APP_EXECUTABLE_DIR="${0:A:h}"
+PROJECT_DIR="$(cd "$APP_EXECUTABLE_DIR/../../.." && pwd)"
+
+osascript \
+  -e 'tell application "Terminal"' \
+  -e 'activate' \
+  -e "do script \"cd '${PROJECT_DIR}' && ./start_ui.command\"" \
+  -e 'end tell'

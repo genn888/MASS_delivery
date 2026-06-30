@@ -1,0 +1,62 @@
+@startuml sequence_diagram
+!theme resume-light
+skinparam backgroundColor #fdfdfd
+skinparam ActorBorderColor #4a90e2
+skinparam ParticipantBorderColor #4a90e2
+skinparam ParticipantBackgroundColor #ebf4ff
+skinparam SequenceLifeLineBorderColor #4a90e2
+skinparam SequenceBoxBackgroundColor #f0f8ff
+skinparam SequenceBoxBorderColor #4a90e2
+
+actor User
+participant "Requirement\nAnalyzer" as RA
+participant "Architect" as ARCH
+participant "Coder" as CODER
+participant "Static\nValidator" as SV
+participant "Reviewer" as REV
+participant "Finalizer" as FIN
+
+title Multi-Agent Project Generation Sequence
+
+User -> RA : Starts Task
+activate RA
+RA -> RA: Parse Task & Rules
+RA -> ARCH : Requirements
+deactivate RA
+
+activate ARCH
+ARCH -> ARCH: Design Plan
+ARCH -> CODER : Implementation Plan
+deactivate ARCH
+
+loop Internal Refinement
+    activate CODER
+    CODER -> CODER: Code Files
+    CODER -> SV : Request Validation
+    deactivate CODER
+    
+    activate SV
+    SV -> SV: Deterministic Checks
+    alt #FFEBEE Failed
+        SV -> CODER: Return Errors
+    else #E8F5E9 Passed
+        SV -> REV : Verification Passed
+    end
+    deactivate SV
+    
+    activate REV
+    REV -> REV: Multi-Agent Review
+    alt #FFEBEE Bugs Found
+        REV -> CODER: Return Feedback
+    else #E8F5E9 Approved
+        REV -> FIN: Work Completed
+    end
+    deactivate REV
+end
+
+activate FIN
+FIN -> FIN: Aggregate Logs
+FIN -> User: Final Report & Workspace
+deactivate FIN
+
+@enduml

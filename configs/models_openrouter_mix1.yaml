@@ -1,0 +1,145 @@
+roles:
+  requirement_analyzer:
+    provider: openai_compatible
+    model: mistralai/mistral-small-3.2-24b-instruct
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 4096
+    provider_preferences:
+      order:
+      - mistral
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  architect:
+    provider: openai_compatible
+    model: qwen/qwen3-32b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 16384
+    reasoning:
+      enabled: true
+    provider_preferences:
+      order:
+      - alibaba
+      - atlas-cloud
+      - deepinfra
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  planning_reviewer:
+    provider: openai_compatible
+    model: qwen/qwen3-30b-a3b-thinking-2507
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 8192
+    reasoning:
+      enabled: true
+    provider_preferences:
+      order:
+      - atlas-cloud
+      quantizations:
+      - fp8
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  coder:
+    provider: openai_compatible
+    model: qwen/qwen3.5-27b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 16384
+    provider_preferences:
+      order:
+      - alibaba
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: true
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  reviewer:
+    provider: openai_compatible
+    model: mistralai/mistral-small-3.2-24b-instruct
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 4096
+    provider_preferences:
+      order:
+      - mistral
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 131072
+  test_writer:
+    provider: openai_compatible
+    model: qwen/qwen3.5-27b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.1
+    max_tokens: 4096
+    provider_preferences:
+      order:
+      - alibaba
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_solver:
+    provider: openai_compatible
+    model: qwen/qwen3.5-27b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.0
+    max_tokens: 8192
+    provider_preferences:
+      order:
+      - alibaba
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144
+  parameter_repairer:
+    provider: openai_compatible
+    model: qwen/qwen3.5-27b
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    temperature: 0.2
+    max_tokens: 8192
+    provider_preferences:
+      order:
+      - alibaba
+      allow_fallbacks: false
+      require_parameters: true
+    capabilities:
+      supports_tools: false
+      supports_json: true
+      supports_system_prompt: true
+      max_context: 262144

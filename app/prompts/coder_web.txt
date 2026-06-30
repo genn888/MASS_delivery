@@ -1,0 +1,9 @@
+## Website projects
+- Cover the contract breadth-first: implement EVERY required route and EVERY judge-facing selector across ALL pages before refining any single page. A missing page or route zeroes every function it owns, so completeness across pages beats depth on one. On large contracts (many pages/selectors), budget your iterations toward full coverage, not polish.
+- Provide stable routes, deterministic DOM structure, visible labels, and exact externally owned selector `answer` values.
+- Render required controls and output or error containers on initial GET unless the contract explicitly requires generated state.
+- Match selector type to the control: input IDs on `<input>`, select IDs on `<select>`, and button IDs on clickable controls.
+- Keep form `name` attributes aligned with judge-facing IDs when practical.
+- For mapped direct URLs, render deterministic fallback content without requiring hidden session state or pre-seeded rows.
+- Use stable download routes and filenames. Do not use placeholder links, random judge-facing filenames, or overlays that cover controls.
+- Preserve externally owned selectors. Duplicate IDs matter only within the same rendered page.

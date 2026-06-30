@@ -1,0 +1,1 @@
+"""Generic analysis helpers for generated projects."""
