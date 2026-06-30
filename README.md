@@ -34,9 +34,9 @@ The active workflow expects these roles:
 
 ## Configuration Files
 
-- [`configs/models_example.yaml`](/c:/Users/genna/Desktop/MAS/configs/models_example.yaml): all roles use `mock`
-- [`configs/models_production.yaml`](/c:/Users/genna/Desktop/MAS/configs/models_production.yaml): production-oriented split with Gemma for planning/review roles and Qwen for coding
-- [`configs/system.yaml`](/c:/Users/genna/Desktop/MAS/configs/system.yaml): iteration limits
+- [`configs/models_example.yaml`](./configs/models_example.yaml): all roles use `mock`
+- [`configs/models_production.yaml`](./configs/models_production.yaml): production-oriented split with Gemma for planning/review roles and Qwen for coding
+- [`configs/system.yaml`](./configs/system.yaml): iteration limits
 
 ## Required Environment Variables
 
@@ -105,12 +105,12 @@ You can change:
 
 ## Main Files
 
-- [`app/main.py`](/c:/Users/genna/Desktop/MAS/app/main.py): bootstrap and CLI entrypoint
-- [`app/graph/builder.py`](/c:/Users/genna/Desktop/MAS/app/graph/builder.py): LangGraph construction and test loop integration
-- [`app/llm/base_client.py`](/c:/Users/genna/Desktop/MAS/app/llm/base_client.py): normalized provider interface
-- [`app/llm/providers/gemini_client.py`](/c:/Users/genna/Desktop/MAS/app/llm/providers/gemini_client.py): Gemini API integration
-- [`app/llm/providers/openai_compatible_client.py`](/c:/Users/genna/Desktop/MAS/app/llm/providers/openai_compatible_client.py): DashScope/OpenAI-compatible integration
-- [`app/llm/registry.py`](/c:/Users/genna/Desktop/MAS/app/llm/registry.py): provider registry plus mock fallback
+- [`app/main.py`](./app/main.py): bootstrap and CLI entrypoint
+- [`app/graph/builder.py`](./app/graph/builder.py): LangGraph construction and test loop integration
+- [`app/llm/base_client.py`](./app/llm/base_client.py): normalized provider interface
+- [`app/llm/providers/gemini_client.py`](./app/llm/providers/gemini_client.py): Gemini API integration
+- [`app/llm/providers/openai_compatible_client.py`](./app/llm/providers/openai_compatible_client.py): DashScope/OpenAI-compatible integration
+- [`app/llm/registry.py`](./app/llm/registry.py): provider registry plus mock fallback
 
 ## Notes
 
@@ -122,8 +122,8 @@ You can change:
 
 This repository now includes a ProjectEval adapter runner:
 
-- [`app/benchmark/projecteval_runner.py`](/c:/Users/genna/Desktop/MAS/app/benchmark/projecteval_runner.py)
-- [`configs/projecteval_example.yaml`](/c:/Users/genna/Desktop/MAS/configs/projecteval_example.yaml)
+- [`app/benchmark/projecteval_runner.py`](./app/benchmark/projecteval_runner.py)
+- [`configs/projecteval_example.yaml`](./configs/projecteval_example.yaml)
 
 It can:
 
@@ -168,6 +168,6 @@ python -m app.benchmark.projecteval_runner \
 
 Manual requirement for official `run_judge.py`:
 
-- put a supported browser driver executable such as `chromedriver.exe`, `msedgedriver.exe`, or `geckodriver.exe` in [`external/ProjectEval`](/c:/Users/genna/Desktop/MAS/external/ProjectEval)
+- put a supported browser driver executable such as `chromedriver.exe`, `msedgedriver.exe`, or `geckodriver.exe` in [`external/ProjectEval`](./external/ProjectEval)
 
 Without a driver, the adapter still exports valid experiment files and computes local benchmark summaries, but it skips the official ProjectEval judge.
