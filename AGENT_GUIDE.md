@@ -22,7 +22,7 @@ OPENROUTER_API_KEY="<your-openrouter-api-token>"
 ---
 
 ## 3. Setup & Activation Commands
-To initialize the execution environment on macOS:
+To initialize the execution environment on macOS (requires Python 3.9+):
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate

@@ -7,6 +7,9 @@ Benvenuto in MASS! Questa guida ti spiega passo dopo passo come configurare ed e
 ## 1. Preparazione dell'ambiente ed Avvio (Zero-Config)
 Il progetto è configurato per installare automaticamente tutte le dipendenze e creare l'ambiente virtuale al primo avvio. Non è richiesto alcun comando da terminale.
 
+> [!IMPORTANT]
+> **Requisito Fondamentale**: È necessario avere **Python 3 (versione 3.9 o superiore)** installato sulla macchina (es. Python 3.10, 3.11, 3.12).
+
 - **Su macOS (Mac)**: Fai doppio clic sul file `start_ui.command` o esegui `Start UI.app`.
 - **Su Windows**: Fai doppio clic sul file `start_ui.bat`.
 
@@ -66,3 +69,23 @@ python3 -m app.main --models-config configs/models_openrouter_qwen36plus.yaml --
 python3 -m app.benchmark.projecteval_runner --models-config configs/models_openrouter_qwen36plus.yaml --level 1 --project-ids 1,2 --mode direct
 ```
 *(Questo comando avvierà i test di ProjectEval per i progetti ID 1 e 2 al livello 1, salvando i report di esecuzione locali nella directory del workspace).*
+
+---
+
+## 5. Risoluzione dei Problemi (Troubleshooting)
+
+### A. Errore "command not found: python3" o "python"
+- **Causa**: Python 3 non è installato sulla macchina o non è configurato nel PATH di sistema.
+- **Soluzione**: Scarica l'installer per il tuo sistema operativo da [python.org/downloads](https://www.python.org/downloads/) e procedi all'installazione. *Su Windows, assicurati di spuntare la casella "Add Python to PATH" all'avvio dell'installazione.*
+
+### B. Errore di connessione durante la prima installazione
+- **Causa**: La prima esecuzione richiede una connessione internet attiva per scaricare le librerie necessarie (circa 100MB di pacchetti) tramite `pip`.
+- **Soluzione**: Assicurati di essere connesso a internet prima di avviare il file per la prima volta.
+
+### C. Errore di privilegi / permessi su macOS
+- **Causa**: macOS blocca di default l'avvio di file eseguibili scaricati dal browser (mancanza del flag di esecuzione).
+- **Soluzione**: Apri il Terminale, digita `chmod +x ` (lasciando uno spazio alla fine) e trascina il file `start_ui.command` all'interno della finestra del Terminale, poi premi Invio. Successivamente, il doppio clic funzionerà sempre.
+
+### D. Versione di Python troppo vecchia
+- **Causa**: Se sulla macchina è presente una versione di Python inferiore alla 3.9 (es. Python 3.7 o 3.8), l'installazione fallirà a causa di incompatibilità delle librerie.
+- **Soluzione**: Installa una versione recente di Python (es. Python 3.10, 3.11 o 3.12) da python.org.
