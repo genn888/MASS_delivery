@@ -14,20 +14,23 @@ This guide contains technical specifications, system entrypoints, and command ex
 ---
 
 ## 2. Environmental Variables
-The codebase relies on python-dotenv. The following key must be configured in a `.env` file at the root or exported before runtime:
+The codebase relies on python-dotenv to fetch runtime secrets. The following key must be configured in a `.env` file at the root or exported before runtime:
 ```bash
 OPENROUTER_API_KEY="<your-openrouter-api-token>"
 ```
+*Note: An agent or user running the Streamlit dashboard can save this key directly via the sidebar API keys panel, which automatically writes the value to the `.env` file.*
 
 ---
 
 ## 3. Setup & Activation Commands
-To initialize the execution environment on macOS (requires Python 3.9+):
+To initialize the execution environment manually on macOS (requires Python 3.9+):
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+Alternatively, executing the launchers (`start_ui.command` on macOS or `start_ui.bat` on Windows) will automatically trigger environment initialization, package installation, and start the Streamlit service in one step.
 
 ---
 
