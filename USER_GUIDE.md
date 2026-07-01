@@ -18,16 +18,13 @@ Il progetto è configurato per installare automaticamente tutte le dipendenze e 
 ---
 
 ## 2. Configurazione delle credenziali OpenRouter
-Il sistema necessita della tua chiave OpenRouter per interrogare i modelli esterni. Puoi inserirla in due modi:
+Il sistema necessita della tua chiave OpenRouter per interrogare i modelli esterni. 
 
-- **Metodo A (Consigliato - Tramite Interfaccia Web)**:
-  Una volta avviata l'interfaccia Streamlit nel browser, troverai nella barra laterale sinistra il pannello **Chiavi API (OpenRouter)**. Digita la tua chiave e clicca su **Salva Chiave**. La chiave verrà salvata automaticamente nel file `.env` locale in modo persistente.
-  
-- **Metodo B (Manuale)**:
-  Crea un file di testo nella directory principale del progetto chiamato esattamente `.env` ed inserisci all'interno la seguente riga:
-  ```env
-  OPENROUTER_API_KEY=ghp_tua_chiave_personale_openrouter_qui
-  ```
+Crea un file di testo nella directory principale del progetto chiamato esattamente `.env` ed inserisci all'interno la seguente riga:
+```env
+OPENROUTER_API_KEY=ghp_tua_chiave_personale_openrouter_qui
+```
+*(Puoi copiare la chiave fornita o la tua chiave OpenRouter personale. Il file `.env` verrà letto automaticamente all'avvio).*
 
 ---
 

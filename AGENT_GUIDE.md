@@ -18,7 +18,6 @@ The codebase relies on python-dotenv to fetch runtime secrets. The following key
 ```bash
 OPENROUTER_API_KEY="<your-openrouter-api-token>"
 ```
-*Note: An agent or user running the Streamlit dashboard can save this key directly via the sidebar API keys panel, which automatically writes the value to the `.env` file.*
 
 ---
 
