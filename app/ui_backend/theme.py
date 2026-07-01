@@ -6,7 +6,7 @@ import os
 
 def render_api_config_sidebar() -> None:
     st.sidebar.markdown("---")
-    st.sidebar.subheader("🔑 Configurazione Chiavi API")
+    st.sidebar.subheader("🔑 Chiavi API (OpenRouter)")
     
     env_content = {}
     if os.path.exists('.env'):
@@ -19,49 +19,30 @@ def render_api_config_sidebar() -> None:
         except Exception:
             pass
                     
-    current_or_key = os.environ.get("OPENROUTER_API_KEY") or env_content.get("OPENROUTER_API_KEY") or ""
-    current_hf_token = os.environ.get("HF_TOKEN") or env_content.get("HF_TOKEN") or ""
+    current_key = os.environ.get("OPENROUTER_API_KEY") or env_content.get("OPENROUTER_API_KEY") or ""
     
-    or_key_input = st.sidebar.text_input(
+    openrouter_key_input = st.sidebar.text_input(
         "OpenRouter API Key",
         type="password",
-        value=current_or_key,
-        help="Chiave API per i modelli OpenRouter. Viene salvata nel file .env locale."
+        value=current_key,
+        help="Inserisci la tua chiave API OpenRouter. Verrà salvata nel file .env locale per le sessioni future."
     )
     
-    hf_token_input = st.sidebar.text_input(
-        "Hugging Face Token (HF_TOKEN)",
-        type="password",
-        value=current_hf_token,
-        help="Token per accedere ai modelli ospitati su Hugging Face. Viene salvato nel file .env locale."
-    )
-    
-    if st.sidebar.button("Salva Chiavi"):
-        # Update OpenRouter Key
-        if or_key_input:
-            env_content['OPENROUTER_API_KEY'] = or_key_input
-            os.environ['OPENROUTER_API_KEY'] = or_key_input
+    if st.sidebar.button("Salva Chiave"):
+        if openrouter_key_input:
+            env_content['OPENROUTER_API_KEY'] = openrouter_key_input
+            os.environ['OPENROUTER_API_KEY'] = openrouter_key_input
         else:
             if 'OPENROUTER_API_KEY' in env_content:
                 del env_content['OPENROUTER_API_KEY']
             if 'OPENROUTER_API_KEY' in os.environ:
                 del os.environ['OPENROUTER_API_KEY']
                 
-        # Update Hugging Face Token
-        if hf_token_input:
-            env_content['HF_TOKEN'] = hf_token_input
-            os.environ['HF_TOKEN'] = hf_token_input
-        else:
-            if 'HF_TOKEN' in env_content:
-                del env_content['HF_TOKEN']
-            if 'HF_TOKEN' in os.environ:
-                del os.environ['HF_TOKEN']
-                
         try:
             with open('.env', 'w', encoding='utf-8') as f:
                 for k, v in env_content.items():
                     f.write(f"{k}={v}\n")
-            st.sidebar.success("Chiavi salvate con successo!")
+            st.sidebar.success("Chiave salvata!")
             st.rerun()
         except Exception as e:
             st.sidebar.error(f"Errore nel salvataggio: {e}")
