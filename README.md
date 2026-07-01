@@ -6,14 +6,14 @@
 
 An advanced, model-agnostic multi-agent code generation platform built on top of **LangGraph**. MASS automates the entire software engineering lifecycle—from requirement analysis and architectural planning to iterative coding, dynamic test validation, and quality review.
 
-Featuring a premium **Streamlit Control Center** for interactive chat and automated benchmarking, MASS is optimized for execution on macOS and Windows with zero configuration (Note: This interface is designed specifically for research and experimental purposes, and is not yet ready for production deployment).
+Featuring a **Streamlit Control Center** for interactive chat and automated benchmarking, MASS is optimized for execution on macOS and Windows with zero configuration (Note: This interface is designed specifically for research and experimental purposes, and is not yet ready for production deployment).
 
 ---
 
 ## 🌟 Key Features
 
 *   **🧠 Multi-Agent Collaboration Loop**: Coordinates specialized agents (`Requirement Analyzer`, `Architect`, `Planning Reviewer`, `Coder`, `Test Writer`, and `Quality Reviewer`) inside an iterative LangGraph state machine.
-*   **💻 Premium Web Interface**: A sleek, dark-themed Streamlit dashboard containing interactive Chat workspaces, persistent session history, and Benchmark run controls.
+*   **💻 Web Interface**: A sleek, dark-themed Streamlit dashboard containing interactive Chat workspaces, persistent session history, and Benchmark run controls.
 *   **⚡ Zero-Config Launchers**: Platform-specific double-click launchers (`start_ui.command` / `Start UI.app` for macOS and `start_ui.bat` for Windows) that automatically create virtual environments, install dependencies, and launch the web interface.
 *   **🔑 Local API Keys Expander**: A secure sidebar manager in the Web UI to persist `OPENROUTER_API_KEY` and `HF_TOKEN` locally in `.env` (gitignored) without manual file editing.
 *   **📈 ProjectEval Benchmark Adapter**: A direct executor interface to run, monitor, and assess agentic performance against execution-based benchmarks with automated Pass@1 proxy scoring.
