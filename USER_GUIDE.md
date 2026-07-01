@@ -17,14 +17,18 @@ Il progetto è configurato per installare automaticamente tutte le dipendenze e 
 
 ---
 
-## 2. Configurazione delle credenziali OpenRouter
-Il sistema necessita della tua chiave OpenRouter per interrogare i modelli esterni. 
+## 2. Configurazione delle credenziali (OpenRouter / Hugging Face)
+Il sistema necessita delle tue chiavi API per interrogare i modelli esterni. Puoi impostarle in due modi:
 
-Crea un file di testo nella directory principale del progetto chiamato esattamente `.env` ed inserisci all'interno la seguente riga:
-```env
-OPENROUTER_API_KEY=ghp_tua_chiave_personale_openrouter_qui
-```
-*(Puoi copiare la chiave fornita o la tua chiave OpenRouter personale. Il file `.env` verrà letto automaticamente all'avvio).*
+- **Metodo A (Consigliato - Tramite Interfaccia Web)**:
+  Nella barra laterale sinistra troverai la sezione espandibile **🔑 Le tue chiavi API**. Inserisci le tue chiavi e premi **Salva chiavi**. Saranno salvate nel file `.env` locale in modo persistente.
+
+- **Metodo B (Manuale)**:
+  Crea un file di testo nella directory principale del progetto chiamato esattamente `.env` ed inserisci all'interno le seguenti righe:
+  ```env
+  OPENROUTER_API_KEY=tua_chiave_openrouter_qui
+  HF_TOKEN=tuo_token_huggingface_qui
+  ```
 
 ---
 

@@ -14,10 +14,12 @@ This guide contains technical specifications, system entrypoints, and command ex
 ---
 
 ## 2. Environmental Variables
-The codebase relies on python-dotenv to fetch runtime secrets. The following key must be configured in a `.env` file at the root or exported before runtime:
+The codebase relies on python-dotenv to fetch runtime secrets. The following keys must be configured in a `.env` file at the root or exported before runtime:
 ```bash
 OPENROUTER_API_KEY="<your-openrouter-api-token>"
+HF_TOKEN="<your-huggingface-token>"
 ```
+*Note: An agent or user running the Streamlit dashboard can save these keys directly via the sidebar expander ("🔑 Le tue chiavi API"), which automatically writes the values to the `.env` file.*
 
 ---
 
