@@ -29,4 +29,5 @@ if [ ! -d ".venv" ]; then
 fi
 
 echo "=== Avvio di MAS Control Center ==="
-.venv/bin/python -m streamlit run streamlit_app.py --server.port 8501
+(sleep 2 && open http://localhost:8501) &
+.venv/bin/python -m streamlit run streamlit_app.py --server.port 8501 --server.headless true

@@ -14,5 +14,6 @@ if not exist .venv (
 )
 
 echo === Avvio di MAS Control Center ===
-.venv\Scripts\python.exe -m streamlit run streamlit_app.py --server.port 8501
+start "" http://localhost:8501
+.venv\Scripts\python.exe -m streamlit run streamlit_app.py --server.port 8501 --server.headless true
 pause
