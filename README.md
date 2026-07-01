@@ -6,7 +6,7 @@
 
 An advanced, model-agnostic multi-agent code generation platform built on top of **LangGraph**. MASS automates the entire software engineering lifecycle—from requirement analysis and architectural planning to iterative coding, dynamic test validation, and quality review.
 
-Featuring a premium **Streamlit Control Center** for interactive chat and automated benchmarking, MASS is optimized for execution on macOS and Windows with zero configuration.
+Featuring a premium **Streamlit Control Center** for interactive chat and automated benchmarking, MASS is optimized for execution on macOS and Windows with zero configuration (Note: This interface is designed specifically for research and experimental purposes, and is not yet ready for production deployment).
 
 ---
 
