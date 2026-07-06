@@ -141,6 +141,7 @@ def ensure_session() -> str:
     if st.sidebar.button('Crea / Usa sessione') and create_name.strip():
         session_manager.create_session(create_name.strip())
         st.session_state['selected_session'] = create_name.strip()
+        st.rerun()
     if options:
         current = st.sidebar.selectbox('Sessione attiva', options=options, index=options.index(st.session_state['selected_session']) if st.session_state.get('selected_session') in options else 0)
         st.session_state['selected_session'] = current

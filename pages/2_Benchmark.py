@@ -37,7 +37,18 @@ active_anywhere = benchmark_runner.get_any_active_run()
 if active_anywhere and 'selected_session' not in st.session_state:
     st.session_state['selected_session'] = active_anywhere.session_name
     st.info(f'✨ Rilevato benchmark attivo per la sessione: `{active_anywhere.session_name}`. Ripristino in corso...')
-projects = load_projecteval_projects()
+try:
+    projects = load_projecteval_projects()
+except FileNotFoundError:
+    st.title('Benchmark ProjectEval')
+    st.error(
+        'Dataset ProjectEval non trovato in '
+        '`external/ProjectEval/data/project_eval_project.json`.\n\n'
+        'La pagina Benchmark richiede il dataset ProjectEval, che non è incluso nel '
+        'repository per via delle dimensioni. Posiziona il benchmark ProjectEval nella '
+        'cartella `external/ProjectEval/` alla radice del progetto per abilitare i benchmark.'
+    )
+    st.stop()
 project_ids = [item['project_id'] for item in projects]
 ROLE_WIDGET_FIELDS = ('model', 'temp', 'tokens')
 AGENT_EVENT_STDOUT_PREFIX = '__MASS_AGENT_EVENT__ '

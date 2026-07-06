@@ -11,7 +11,8 @@ new_session_name = st.text_input('Nuova sessione')
 if st.button('Crea sessione') and new_session_name.strip():
     session_manager.create_session(new_session_name.strip())
     st.session_state['selected_session'] = new_session_name.strip()
-    st.success(f'Sessione `{new_session_name.strip()}` creata.')
+    st.toast(f'Sessione `{new_session_name.strip()}` creata.', icon='✅')
+    st.rerun()
 if not sessions:
     st.info('Nessuna sessione disponibile.')
     st.stop()
