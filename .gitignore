@@ -31,9 +31,14 @@ generated_project/
 benchmark_archives/
 benchmark_runs/
 
-# ProjectEval runtime drivers and generated result files
+# ProjectEval: keep the framework + dataset tracked, but exclude generated run
+# outputs (recreated automatically by benchmark runs) and baseline result dumps.
 external/ProjectEval/.git.projecteval.backup/
 external/ProjectEval/__pycache__/
+external/ProjectEval/experiments/
+external/ProjectEval/log/
+external/ProjectEval/test/
+external/ProjectEval/official-result/
 
 # Version session snapshots so benchmark/UI state can be restored on another machine.
 # Keep interpreter cache noise out of Git while allowing logs, sqlite files,
