@@ -47,3 +47,9 @@ external/ProjectEval/official-result/
 !sessions/**
 sessions/**/__pycache__/
 sessions/**/*.py[cod]
+
+# Materiale di presentazione e analisi storica: esclusi dalla consegna.
+deck_context/
+deck_context.zip
+MASS_presentation.pptx
+ARCHITECTURE_REVIEW_multi_agent.md
